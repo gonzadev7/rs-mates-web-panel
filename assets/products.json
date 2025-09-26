@@ -1,0 +1,77 @@
+[
+  {
+    "nombre": "Bolsito Yerbero y Azucarero",
+    "precio": 6500,
+    "imagen": "assets/bolsito-yerbero-y-azucarero.png.jpeg"
+  },
+  {
+    "nombre": "Bombilla Pico de Loro",
+    "precio": 7000,
+    "imagen": "assets/bombilla-pico-de-loro.png.jpeg"
+  },
+  {
+    "nombre": "Canarias Tradicional 1kg",
+    "precio": 11000,
+    "imagen": "assets/canarias-tradicional.png.jpeg"
+  },
+  {
+    "nombre": "Canasta",
+    "precio": 18000,
+    "imagen": "assets/canasta.png.jpeg"
+  },
+  {
+    "nombre": "Imperial Acero Inoxidable Guarda Cincelada",
+    "precio": 36000,
+    "imagen": "assets/imperial-acero-inoxidable-guarda-cincelada.png.jpeg"
+  },
+  {
+    "nombre": "Imperial de Calabaza Bordo de Alpaca",
+    "precio": 40000,
+    "imagen": "assets/imperial-de-calabaza-bordo-de-alpaca.png.jpeg"
+  },
+  {
+    "nombre": "Mate Algarrobo Virola de Acero",
+    "precio": 20000,
+    "imagen": "assets/mate-algarrobo-virola-de-acero.png.jpeg"
+  },
+  {
+    "nombre": "Termo Media Manija Acero Inoxidable",
+    "precio": 26000,
+    "imagen": "assets/termo-media-manija-acero-inoxidable.png.jpeg"
+  },
+  {
+    "nombre": "Termo Stanley Dorado",
+    "precio": 44500,
+    "imagen": "assets/termo-stanley-dorado.png.jpeg"
+  },
+  {
+    "nombre": "Termo Stanley Negro",
+    "precio": 42000,
+    "imagen": "assets/termo-stanley-negro.png.jpeg"
+  },
+  {
+    "nombre": "Torpedo Algarrobo Virola de Acero Cincelada",
+    "precio": 34000,
+    "imagen": "assets/torpedo-algarrobo-virola-de-acero-cincelada.png.jpeg"
+  },
+  {
+    "nombre": "Yerbero y Azucarero Lata",
+    "precio": 7500,
+    "imagen": "assets/yerbero-y-azucarero-lata.png.jpeg"
+  },
+  {
+    "nombre": "Camionero Algarrobo Marron",
+    "precio": 18500,
+    "imagen": "assets/camionero-algarrobo-marron-18500.jpeg"
+  },
+  {
+    "nombre": "Camionero de calabaza",
+    "precio": 30000,
+    "imagen": "assets/camionero-de-calabaza.jpeg"
+  },
+  {
+    "nombre": "Torpedo de calabaza con virola de alpaca cincelada",
+    "precio": 36000,
+    "imagen": "assets/torpedo-de-calabaza-con-virola-de-alpaca-cincelada.jpeg"
+  }
+]

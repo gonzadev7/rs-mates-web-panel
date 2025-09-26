@@ -1,0 +1,637 @@
+/* --- ESTILOS GENERALES Y RESETEO --- */
+ul {
+  list-style: none; /* Quita los puntos de las listas */
+  padding: 0; /* Quita el padding por defecto */
+  margin: 0; /* Quita el margen por defecto */
+}
+
+body {
+  font-family: "Segoe UI", sans-serif; /* Fuente principal */
+  color: #333; /* Color de texto principal */
+  padding: 1rem; /* Espaciado interno */
+  transition: all 0.3s ease; /* Transición suave para cambios */
+  margin: 0; /* Elimina el margen por defecto del body */
+}
+
+/* --- ENCABEZADO Y LOGO --- */
+header {
+  background: none; /* Sin fondo */
+  padding: 1rem 0; /* Espaciado interno vertical */
+  margin: 0; /* Margen inferior */
+  text-align: center; /* Centra el contenido del header */
+  animation: fadeInDown 0.8s ease-out; /* Animación de entrada */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#frase-amistad {
+  font-family: "Dancing Script", cursive;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #3a240c;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 100%; /* Ancho del logo */
+  max-width: 350px; /* Ancho máximo del logo */
+  height: auto; /* Altura automática */
+  margin-bottom: -6rem; /* Margen inferior */
+  margin-top: -5rem; /* Margen superior */
+  border-radius: 200px; /* Bordes redondeados para hacerlo circular */
+  background-color: transparent; /* Fondo transparente */
+}
+
+header h1 {
+  transition: color 0.3s ease; /* Transición para el color del título */
+  font-family: "JetBrains Mono", monospace; /* Fuente monoespaciada para el título */
+}
+
+header h1:hover {
+  color: #6f4e37; /* Color del título al pasar el mouse */
+}
+
+/* --- CONTENEDORES PRINCIPALES --- */
+#productos {
+  display: grid; /* Se establece un layout de rejilla */
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* Se definen 2 columnas de ancho flexible */
+  gap: 1rem; /* Espacio entre las tarjetas */
+  animation: fadeInUp 1s ease-out 0.2s both; /* Animación de entrada para la sección de productos */
+}
+
+#carrito {
+  animation: fadeInUp 1s ease-out 0.4s both; /* Animación de entrada para la sección del carrito */
+}
+
+/* --- TARJETA DE PRODUCTO (CARD) --- */
+.card {
+  background: #fff; /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  border: 3px solid black; /* Borde ligero */
+  padding: 1rem; /* Espaciado interno */
+  margin-bottom: 1rem; /* Margen inferior */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  text-align: center; /* Texto centrado */
+  transition: all 0.3s ease; /* Transición para todas las propiedades */
+  opacity: 0; /* Inicialmente invisible para la animación */
+  transform: translateY(20px); /* Posición inicial para la animación */
+  animation: slideInUp 0.6s ease-out forwards; /* Animación de entrada */
+  display: flex;
+  flex-direction: column;
+  min-height: 350px; /* Altura mínima para consistencia */
+}
+
+.card-content {
+  flex-grow: 1; /* Permite que este contenedor crezca */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card .btn-agregar {
+  margin-top: auto; /* Empuja el botón hacia abajo */
+}
+
+/* Retraso escalonado para la animación de las cards */
+.card:nth-child(1) {
+  animation-delay: 0.1s; /* Retraso para la primera card */
+}
+.card:nth-child(2) {
+  animation-delay: 0.2s; /* Retraso para la segunda card */
+}
+.card:nth-child(3) {
+  animation-delay: 0.3s; /* Retraso para la tercera card */
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02); /* Efecto de elevación y zoom al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(111, 78, 55, 0.2); /* Sombra más pronunciada */
+}
+
+.card h3 {
+  color: black; /* Color del nombre del producto */
+  margin: 0.5rem 0; /* Margen vertical */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.card:hover h3 {
+  transform: translateY(-2px); /* Pequeño desplazamiento hacia arriba */
+  color: black; /* Color más oscuro */
+}
+
+.card p {
+  color: #666; /* Color del texto de descripción */
+  font-size: 0.9rem; /* Tamaño de fuente */
+  margin-bottom: 1rem; /* Margen inferior */
+  line-height: 1.4; /* Altura de línea */
+  transition: color 0.3s ease; /* Transición de color */
+}
+
+.card:hover p {
+  color: #555; /* Color de texto más oscuro al pasar el mouse */
+}
+
+.precio {
+  font-size: 1.2rem; /* Tamaño de fuente del precio */
+  font-weight: bold; /* Texto en negrita */
+  color: black; /* Color del precio */
+  margin: 0.5rem 0; /* Margen vertical */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.card:hover .precio {
+  color: black; /* Color más oscuro */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* --- IMAGEN DEL PRODUCTO Y EFECTO ZOOM --- */
+.product-image {
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 100%; /* Ancho máximo */
+  height: 200px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+  border-radius: 6px; /* Bordes redondeados */
+  margin-bottom: 1rem; /* Margen inferior */
+  transition: all 0.3s ease; /* Transición suave */
+  cursor: pointer; /* Cursor de puntero para indicar que es clickeable */
+  z-index: 1; /* Posición en el eje Z */
+}
+
+.product-image:hover {
+  transform: scale(1.05); /* Efecto de zoom suave */
+  filter: brightness(1.1); /* Aumenta ligeramente el brillo */
+}
+
+/* Overlay para el zoom de la imagen */
+.zoom-overlay {
+  position: fixed; /* Fijo en la pantalla */
+  top: 0; /* Desde el borde superior */
+  left: 0; /* Desde el borde izquierdo */
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Alto completo de la ventana */
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  z-index: 9998; /* Capa muy alta para estar por encima de todo */
+  display: flex; /* Contenedor flexible */
+  align-items: center; /* Alineación vertical al centro */
+  justify-content: center; /* Alineación horizontal al centro */
+  transition: background 0.3s; /* Transición para el fondo */
+}
+
+.zoomed-img-container {
+  position: relative; /* Posicionamiento relativo para el botón de cerrar */
+  display: inline-block; /* Se ajusta al contenido */
+}
+
+.zoomed-img {
+  max-width: 90vw; /* Ancho máximo de la imagen ampliada */
+  max-height: 80vh; /* Altura máxima */
+  border-radius: 16px; /* Bordes redondeados */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35); /* Sombra pronunciada */
+  background: #fff; /* Fondo blanco por si la imagen es transparente */
+  z-index: 9999; /* Por encima del overlay */
+  display: block; /* Comportamiento de bloque */
+  transition: box-shadow 0.3s, transform 0.3s; /* Transiciones */
+}
+
+/* Botón para cerrar el zoom */
+.zoom-close-btn {
+  position: absolute; /* Posición absoluta respecto al contenedor */
+  top: 10px; /* Distancia desde arriba */
+  right: 10px; /* Distancia desde la derecha */
+  background: rgba(255, 255, 255, 0.85); /* Fondo blanco semitransparente */
+  color: black; /* Color del ícono */
+  border: none; /* Sin borde */
+  border-radius: 50%; /* Botón circular */
+  width: 28px; /* Ancho */
+  height: 28px; /* Alto */
+  font-size: 1.2rem; /* Tamaño del ícono */
+  font-weight: bold; /* Ícono en negrita */
+  cursor: pointer; /* Cursor de puntero */
+  z-index: 10000; /* Por encima de la imagen ampliada */
+  display: flex; /* Contenedor flexible */
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); /* Sombra sutil */
+  transition: background 0.2s, color 0.2s, transform 0.2s; /* Transiciones */
+}
+
+.zoom-close-btn:hover {
+  background: #e74c3c; /* Color rojo al pasar el mouse */
+  color: #fff; /* Color de ícono blanco */
+  transform: scale(1.1); /* Aumenta el tamaño */
+}
+
+/* --- BOTONES --- */
+button {
+  background: rgb(21, 21, 39); /* Color de fondo principal para botones */
+  color: #fff; /* Color de texto blanco */
+  border: none; /* Sin borde */
+  padding: 0.5rem 1rem; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de puntero */
+  transition: all 0.3s ease; /* Transición suave */
+  position: relative; /* Posición relativa para el pseudo-elemento */
+  overflow: hidden; /* Para el efecto de brillo */
+}
+
+/* Efecto de brillo en los botones */
+button::before {
+  content: ""; /* Contenido vacío requerido para pseudo-elementos */
+  position: absolute; /* Posición absoluta */
+  top: 0; /* Desde arriba */
+  left: -100%; /* Inicialmente fuera de la vista a la izquierda */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  ); /* Gradiente para el brillo */
+  transition: left 0.5s ease; /* Transición de la posición */
+}
+
+button:hover {
+  background: rgb(21, 21, 39); /* Color más oscuro al pasar el mouse */
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: 0 4px 12px rgb(35, 35, 109); /* Sombra más pronunciada */
+}
+
+button:hover::before {
+  left: 100%; /* Mueve el brillo de izquierda a derecha */
+}
+
+button:active {
+  transform: translateY(0); /* Vuelve a la posición original al hacer clic */
+  box-shadow: 0 2px 6px rgb(35, 35, 109); /* Sombra reducida */
+}
+
+/* --- CARRITO DE COMPRAS FLOTANTE --- */
+#carrito-flotante {
+  position: fixed; /* Fijo en la pantalla */
+  bottom: 20px; /* Distancia desde abajo */
+  right: 20px; /* Distancia desde la derecha */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Ícono del carrito */
+#carrito-icono {
+  background: rgb(21, 21, 39); /* Color de fondo */
+  color: white; /* Color del ícono */
+  width: 60px; /* Ancho */
+  height: 60px; /* Alto */
+  border-radius: 50%; /* Circular */
+  display: flex; /* Contenedor flexible */
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  cursor: pointer; /* Cursor de puntero */
+  box-shadow: 0 4px 12px rgba(111, 78, 55, 0.3); /* Sombra */
+  transition: all 0.3s ease; /* Transición suave */
+  position: relative; /* Posición relativa para el contador */
+  animation: pulse 2s infinite; /* Animación de pulso sutil */
+}
+
+#carrito-icono:hover {
+  transform: scale(1.1); /* Aumenta el tamaño */
+  box-shadow: 0 6px 20px rgb(35, 35, 109); /* Sombra más grande */
+  background: rgb(35, 35, 109); /* Color más oscuro */
+}
+
+/* Contador de ítems en el carrito */
+#contador-carrito {
+  position: absolute; /* Posición absoluta respecto al ícono */
+  top: -5px; /* Distancia desde arriba */
+  right: -5px; /* Distancia desde la derecha */
+  background: #e74c3c; /* Color rojo para llamar la atención */
+  color: white; /* Texto blanco */
+  border-radius: 50%; /* Circular */
+  width: 24px; /* Ancho */
+  height: 24px; /* Alto */
+  display: flex; /* Contenedor flexible */
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  font-size: 12px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  transform: scale(0); /* Oculto por defecto */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+#contador-carrito.visible {
+  transform: scale(1); /* Se hace visible con una animación */
+  animation: bounce 0.5s ease; /* Animación de rebote */
+}
+
+/* Contenido del panel del carrito */
+#carrito-contenido {
+  position: absolute; /* Posición absoluta */
+  bottom: 70px; /* Posicionado sobre el ícono */
+  right: 0; /* Alineado a la derecha */
+  background: white; /* Fondo blanco */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Sombra pronunciada */
+  width: 320px; /* Ancho del panel */
+  max-height: auto; /* Altura automática */
+  overflow: hidden; /* Oculta el contenido que se desborda */
+  transition: all 0.3s ease; /* Transición suave */
+  transform-origin: bottom right; /* Punto de origen para la animación de escala */
+}
+
+/* Clases para mostrar y ocultar el panel del carrito */
+#carrito-contenido.carrito-oculto {
+  opacity: 0; /* Opacidad 0 para ocultar */
+  transform: scale(0.8) translateY(20px); /* Animación de salida */
+  pointer-events: none; /* No se puede interactuar cuando está oculto */
+}
+
+#carrito-contenido.carrito-visible {
+  opacity: 1; /* Opacidad 1 para mostrar */
+  transform: scale(1) translateY(0); /* Animación de entrada */
+  pointer-events: all; /* Se puede interactuar */
+}
+
+/* Encabezado del carrito */
+.carrito-header {
+  padding: 1rem; /* Espaciado interno */
+  border-bottom: 1px solid #eee; /* Borde inferior */
+  display: flex; /* Contenedor flexible */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: center; /* Alineación vertical */
+  background: #f8f9fa; /* Fondo ligeramente gris */
+}
+
+.carrito-header h3 {
+  margin: 0; /* Sin margen */
+  color: rgb(35, 35, 109); /* Color del título */
+  font-size: 1.1rem; /* Tamaño de fuente */
+}
+
+#cerrar-carrito {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  font-size: 24px; /* Tamaño del ícono */
+  color: #999; /* Color del ícono */
+  cursor: pointer; /* Cursor de puntero */
+  padding: 0; /* Sin espaciado interno */
+  width: 30px; /* Ancho */
+  height: 30px; /* Alto */
+  display: flex; /* Contenedor flexible */
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  border-radius: 50%; /* Circular */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+#cerrar-carrito:hover {
+  background: #f0f0f0; /* Fondo gris claro al pasar el mouse */
+  color: #333; /* Color de ícono más oscuro */
+}
+
+/* Lista de productos en el carrito */
+#lista-carrito {
+  list-style: none; /* Sin estilo de lista */
+  padding: 0; /* Sin espaciado interno */
+  margin: 0; /* Sin margen */
+  max-height: 200px; /* Altura máxima con scroll */
+  overflow-y: auto; /* Scroll vertical automático */
+}
+
+#lista-carrito li {
+  padding: 0.75rem 1rem; /* Espaciado interno */
+  border-bottom: 1px solid #f0f0f0; /* Borde inferior */
+  animation: slideInRight 0.4s ease-out; /* Animación de entrada */
+  transition: all 0.3s ease; /* Transición suave */
+  display: grid; /* Layout de rejilla */
+  grid-template-columns: 1fr auto auto; /* Layout para nombre, precio y cantidad */
+  gap: 0.5rem; /* Espacio entre columnas */
+  align-items: center; /* Alineación vertical */
+  font-size: 0.9rem; /* Tamaño de fuente */
+}
+
+#lista-carrito li:hover {
+  background: #f8f9fa; /* Fondo gris claro al pasar el mouse */
+}
+
+#lista-carrito li:last-child {
+  border-bottom: none; /* Sin borde para el último elemento */
+}
+
+.item-precio {
+  color: rgb(35, 35, 109); /* Color del precio */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 0.85rem; /* Tamaño de fuente */
+}
+
+.item-cantidad {
+  background: rgb(35, 35, 109); /* Color de fondo */
+  color: white; /* Texto blanco */
+  border-radius: 12px; /* Bordes redondeados */
+  padding: 2px 8px; /* Espaciado interno */
+  font-size: 0.8rem; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  min-width: 20px; /* Ancho mínimo */
+  text-align: center; /* Texto centrado */
+}
+
+/* Botón para quitar un producto del carrito */
+.quitar-producto {
+  background: #e0e0e0; /* Fondo gris */
+  color: #6f4e37; /* Color del ícono */
+  border: none; /* Sin borde */
+  border-radius: 50%; /* Circular */
+  width: 22px; /* Ancho */
+  height: 22px; /* Alto */
+  font-size: 15px; /* Tamaño del ícono */
+  display: flex; /* Contenedor flexible */
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  cursor: pointer; /* Cursor de puntero */
+  margin-left: 8px; /* Margen izquierdo */
+  transition: background 0.2s, color 0.2s, transform 0.2s; /* Transiciones */
+  padding: 0; /* Sin espaciado interno */
+  box-shadow: none; /* Sin sombra */
+}
+
+.quitar-producto:hover {
+  background: #e74c3c; /* Fondo rojo al pasar el mouse */
+  color: #fff; /* Ícono blanco */
+  transform: scale(1.1); /* Aumenta el tamaño */
+}
+
+/* Pie del carrito */
+.carrito-footer {
+  padding: 1rem; /* Espaciado interno */
+  border-top: 1px solid #eee; /* Borde superior */
+  background: #f8f9fa; /* Fondo gris claro */
+  display: flex; /* Contenedor flexible */
+  gap: 0.5rem; /* Espacio entre elementos */
+  flex-direction: column; /* Dirección de columna */
+}
+
+.total-carrito {
+  background: #f0f8ff; /* Fondo azul claro */
+  border: 2px solid rgb(35, 35, 109); /* Borde */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 0.75rem; /* Espaciado interno */
+  text-align: center; /* Texto centrado */
+  margin-bottom: 0.5rem; /* Margen inferior */
+  font-size: 1.1rem; /* Tamaño de fuente */
+  color: rgb(35, 35, 109); /* Color de texto */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.total-carrito:hover {
+  background: #e6f3ff; /* Fondo más oscuro al pasar el mouse */
+  transform: scale(1.02); /* Aumenta ligeramente el tamaño */
+}
+
+/* Botones de acción del carrito */
+#vaciar-carrito {
+  background: rgb(35, 35, 109); /* Fondo rojo */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 0.5rem 1rem; /* Espaciado interno */
+  border-radius: 6px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de puntero */
+  transition: all 0.3s ease; /* Transición suave */
+  font-size: 0.9rem; /* Tamaño de fuente */
+}
+
+#vaciar-carrito:hover {
+  background: #c0392b; /* Fondo rojo más oscuro */
+  transform: translateY(-1px); /* Efecto de elevación */
+}
+
+#enviar-wsp {
+  background: #25d366; /* Color de WhatsApp */
+  font-size: 1rem; /* Tamaño de fuente */
+  padding: 0.75rem 1rem; /* Espaciado interno */
+  border-radius: 6px; /* Bordes redondeados */
+  transition: all 0.3s ease; /* Transición suave */
+  font-weight: bold; /* Texto en negrita */
+}
+
+#enviar-wsp:hover {
+  background: #20ba5a; /* Color más oscuro */
+  transform: translateY(-1px); /* Efecto de elevación */
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); /* Sombra */
+}
+
+#enviar-wsp:disabled {
+  background: #ccc; /* Fondo gris */
+  cursor: not-allowed; /* Cursor no permitido */
+  transform: none; /* Sin transformación */
+  box-shadow: none; /* Sin sombra */
+}
+
+/* --- ANIMACIONES (KEYFRAMES) --- */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(111, 78, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(111, 78, 55, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(111, 78, 55, 0.3);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+  40%,
+  43% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+}
+
+/* --- ACCESIBILIDAD Y RESPONSIVE --- */
+
+/* Reduce las animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+  #carrito-contenido {
+    width: 280px; /* Ancho reducido */
+    bottom: 70px; /* Distancia desde abajo */
+    right: -10px; /* Ajuste de posición a la derecha */
+  }
+
+  #carrito-flotante {
+    bottom: 15px; /* Distancia desde abajo */
+    right: 15px; /* Distancia desde la derecha */
+  }
+}
+
+body.lazy-background-loaded {
+  background: url("assets/fondo-mobile.png.jpeg") no-repeat center center fixed;
+  background-size: cover;
+}
+.emoji-frase {
+  font-size: 1.8rem; /* O el tamaño que prefieras */
+}

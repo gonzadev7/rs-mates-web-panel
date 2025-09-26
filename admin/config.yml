@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main # O la rama que uses como principal (ej. master)
+
+media_folder: "assets" # Carpeta donde se subirán las nuevas imágenes
+public_folder: "/assets" # Ruta pública para acceder a las imágenes
+
+collections:
+  - name: "products"
+    label: "Productos"
+    file: "assets/products.json" # Ruta a tu archivo de datos
+    label_singular: "Producto"
+    description: "Aquí puedes crear, editar y eliminar productos."
+    create: true
+    delete: true
+    identifier_field: nombre
+    format: "json"
+    widget: "list"
+    fields:
+      - { label: "Nombre", name: "nombre", widget: "string" }
+      - { label: "Precio", name: "precio", widget: "number" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
